@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using static Colia.Unit;
+using static Colia.Unit.Characters;
 
 public class Game 
 { 
@@ -11,7 +12,7 @@ public class Game
         Characters tb = new Characters("Trailblazer", 980, 20, 8);
         Characters dh = new Characters("DanHeng", 714, 25, 3);
         Characters m7 = new Characters("March7th", 857, 14, 6, true, 180);
-        Boss cocolia = new Boss("Cocolia", 1307, 42, 10);
+        Boss cocolia = new Boss("Cocolia", 1307, 58, 10);
         Random random = new Random();
 
         tb.MaxHp = 980;
