@@ -15,6 +15,7 @@ namespace Colia
         int Def { get; set; }
         int MaxHp { get; set; }
         bool isDead { get; set; }
+
         void Damage(int TrueDamage);
         void Attack(Unit target);
         void UseUltimate(List<Unit> team, List<Unit> boss);
@@ -94,14 +95,14 @@ namespace Colia
                             Console.WriteLine($"{character.Name} Healed the team by {Heal}, HP: {character.Hp}/{character.MaxHp}");
                         }
 
-                 
+                        else
+                        {
+                            int rng = random.Next(2, 11);
+                            int DamageTotal = Atk + rng;
+                            boss[0].Damage(DamageTotal);
+                            //Console.WriteLine($"{Name} dealt {rngDamage} amount of damage");
+                        }
                     }
-                }
-                else
-                {
-                    var rng = random.Next(2, 11);
-                    var DamageTotal = Atk + rng;
-                    boss[0].Damage(DamageTotal);
                 }
             }
         }
