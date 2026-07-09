@@ -9,10 +9,10 @@ public class Game
 { 
     public void Start()
     {
-        Characters tb = new Characters("Trailblazer", 980, 20, 8);
-        Characters dh = new Characters("DanHeng", 714, 25, 3);
-        Characters m7 = new Characters("March7th", 857, 14, 6, true, 180);
-        Boss cocolia = new Boss("Cocolia", 1307, 102, 10);
+        Characters tb = new Characters("Trailblazer", 980, 25, 8);
+        Characters dh = new Characters("DanHeng", 714, 30, 3);
+        Characters m7 = new Characters("March7th", 857, 24, 6, true, 80);
+        Boss cocolia = new Boss("Cocolia", 1307, 140, 10);
         Random random = new Random();
 
         tb.MaxHp = 980;

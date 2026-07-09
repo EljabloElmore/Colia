@@ -35,7 +35,7 @@ namespace Colia
         static List<string> voiceLines = new List<string>()
     {
         "Freeze to death!",
-        " A world devoured by ice!",
+        "A world devoured by ice!",
         "The Eternal Freeze will bury you.",
         "Judgment of eternal winter!"
     };
