@@ -9,6 +9,13 @@ namespace Colia
 
     public interface IComabat
     {
+        string Name { get; set; }
+        int Hp { get; set; }
+        int Atk { get; set; }
+        int Def { get; set; }
+        int MaxHp { get; set; }
+        bool isDead { get; set; }
+
         void Damage(int TrueDamage);
         void Attack(Unit target);
         void UseUltimate(List<Unit> team, List<Unit> boss);
