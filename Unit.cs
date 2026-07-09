@@ -32,6 +32,14 @@ namespace Colia
 
         public Random random = new Random();
 
+        static List<string> voiceLines = new List<string>()
+    {
+        "Freeze to death!",
+        " A world devoured by ice!",
+        "The Eternal Freeze will bury you.",
+        "Judgment of eternal winter!"
+    };
+
         public Unit(string name, int hp, int atk, int def)
         {
             Name = name;
@@ -95,14 +103,15 @@ namespace Colia
                             Console.WriteLine($"{character.Name} Healed the team by {Heal}, HP: {character.Hp}/{character.MaxHp}");
                         }
 
-                        else
-                        {
-                            int rng = random.Next(2, 11);
-                            int DamageTotal = Atk + rng;
-                            boss[0].Damage(DamageTotal);
-                            //Console.WriteLine($"{Name} dealt {rngDamage} amount of damage");
-                        }
                     }
+                }
+
+                else
+                {
+                    int rng = random.Next(2, 11);
+                    int DamageTotal = Atk + rng;
+                    boss[0].Damage(DamageTotal);
+                    Console.WriteLine($"{Name} dealt {DamageTotal} amount of damage");
                 }
             }
         }
@@ -116,7 +125,8 @@ namespace Colia
 
             public override void UseUltimate(List<Unit> team, List<Unit> boss)
             {
-                Console.WriteLine($"Freeze to death, {Name} used Blizzard");
+                int randomIndex = random.Next(voiceLines.Count);
+                Console.WriteLine($"-> {voiceLines[randomIndex]}");
                 Console.WriteLine("----------------------------------------");
 
                 var alive = team.FindAll(mc => !mc.isDead);
