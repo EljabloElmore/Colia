@@ -12,8 +12,8 @@ public class Game
     {
         Characters tb = new Characters("Trailblazer", 980, 25, 8);
         Characters dh = new Characters("DanHeng", 714, 30, 3);
-        Characters m7 = new Characters("March7th", 857, 24, 6, true, 60);
-        Boss cocolia = new Boss("Cocolia", 1307, 125, 10);
+        Characters m7 = new Characters("March7th", 857, 24, 6, true, 80);
+        Boss cocolia = new Boss("Cocolia", 1307, 115, 10);
         Random random = new Random();
 
         tb.MaxHp = 980;
@@ -123,15 +123,30 @@ public class Game
                 Console.WriteLine("1.Basic Attack");
                 Console.WriteLine("2.Ultimate");
                 Console.WriteLine("----------------------------------------");
-                string option = Console.ReadLine();
+                bool isValid = false;
+                int[] values = {1, 2};
 
-                if (option == "1")
+                while (!isValid)
                 {
-                    character.Attack(targets[0]);
-                }
-                else if (option == "2")
-                {
-                    character.UseUltimate(team, boss);
+                    Console.WriteLine("Enter Your Action: ");
+                    string option = Console.ReadLine();
+
+                    if (string.IsNullOrWhiteSpace(option))
+                    {
+                        Console.WriteLine("Input cannot be empty. Try again.");
+                        continue;
+                    }
+
+                    if (option == "1")
+                    {
+                        character.Attack(targets[0]);
+                        isValid = true;
+                    }
+                    else if (option == "2")
+                    {
+                        character.UseUltimate(team, boss);
+                        isValid = true;
+                    }
                 }
             }
 
