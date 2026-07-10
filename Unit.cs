@@ -7,21 +7,7 @@ using static System.Net.Mime.MediaTypeNames;
 namespace Colia
 {
 
-    public interface IComabat
-    {
-        string Name { get; set; }
-        int Hp { get; set; }
-        int Atk { get; set; }
-        int Def { get; set; }
-        int MaxHp { get; set; }
-        bool isDead { get; set; }
-
-        void Damage(int TrueDamage);
-        void Attack(Unit target);
-        void UseUltimate(List<Unit> team, List<Unit> boss);
-    }
-
-    public class Unit : IComabat
+    public class Unit : ICombat
     {
         public string Name { get; set; }
         public int Hp { get; set; }
@@ -49,6 +35,7 @@ namespace Colia
             Def = def;
         }
 
+        
         public void Damage(int TrueDamage)
         {
             int DamageTotal = TrueDamage - Def;
@@ -65,11 +52,11 @@ namespace Colia
             }
         }
 
-        public virtual void Attack(Unit target)
+        public virtual void Attack(Unit targets)
         {
-            Console.WriteLine($"{Name} attacks {target.Name}");
+            Console.WriteLine($"{Name} attacks {targets.Name}");
             Console.WriteLine("----------------------------------------");
-            target.Damage(Atk);
+            targets.Damage(Atk);
         }
 
         public virtual void UseUltimate(List<Unit> team, List<Unit> boss)

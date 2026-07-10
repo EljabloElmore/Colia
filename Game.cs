@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Linq;
 using static Colia.Unit;
+using static Colia.ICombat;
 
 public class Game 
 { 
@@ -11,8 +12,8 @@ public class Game
     {
         Characters tb = new Characters("Trailblazer", 980, 25, 8);
         Characters dh = new Characters("DanHeng", 714, 30, 3);
-        Characters m7 = new Characters("March7th", 857, 24, 6, true, 80);
-        Boss cocolia = new Boss("Cocolia", 1307, 140, 10);
+        Characters m7 = new Characters("March7th", 857, 24, 6, true, 60);
+        Boss cocolia = new Boss("Cocolia", 1307, 125, 10);
         Random random = new Random();
 
         tb.MaxHp = 980;
@@ -90,7 +91,7 @@ public class Game
 
             if (!tb.isDead && !cocolia.isDead)
             {
-                PlayerTurn(tb, team, boss);
+                PlayerTurn(tb,boss, team, boss);
                 int randomIndex = random.Next(voiceLinesTb.Count);
                 Console.WriteLine($"-> {voiceLinesTb[randomIndex]}");
                 Console.WriteLine("----------------------------------------");
@@ -100,7 +101,7 @@ public class Game
 
             if (!dh.isDead && !cocolia.isDead)
             {
-                PlayerTurn(dh, team, boss);
+                PlayerTurn(dh,boss, team, boss);
                 int randomIndex = random.Next(voiceLinesDh.Count);
                 Console.WriteLine($"-> {voiceLinesDh[randomIndex]}");
                 Console.WriteLine("----------------------------------------");
@@ -109,14 +110,14 @@ public class Game
 
             if (!m7.isDead && !cocolia.isDead)
             {
-                PlayerTurn(m7, team, boss);
+                PlayerTurn(m7, boss, team, boss);
                 int randomIndex = random.Next(voiceLinesM7.Count);
                 Console.WriteLine($"-> {voiceLinesM7[randomIndex]}");
                 Console.WriteLine("----------------------------------------");
                 GameStatus(tb, dh, m7, cocolia);
             }
 
-            static void PlayerTurn(Characters character, List<Unit> team, List<Unit> boss)
+            static void PlayerTurn(Characters character, List<Unit> targets, List<Unit> team, List<Unit> boss)
             {
                 Console.WriteLine($"{character.Name} Turn");
                 Console.WriteLine("1.Basic Attack");
@@ -126,7 +127,7 @@ public class Game
 
                 if (option == "1")
                 {
-                    character.Attack(boss[0]);
+                    character.Attack(targets[0]);
                 }
                 else if (option == "2")
                 {
