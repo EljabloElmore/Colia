@@ -10,10 +10,10 @@ public class Game
 { 
     public void Start()
     {
-        Characters tb = new Characters("Trailblazer", 980, 25, 8);
-        Characters dh = new Characters("DanHeng", 714, 30, 3);
-        Characters m7 = new Characters("March7th", 857, 24, 6, true, 80);
-        Boss cocolia = new Boss("Cocolia", 1307, 115, 10);
+        Characters tb = new Characters("Trailblazer", 980, 25, 10);
+        Characters dh = new Characters("DanHeng", 714, 30, 6);
+        Characters m7 = new Characters("March7th", 857, 24, 9, true, 75);
+        Boss cocolia = new Boss("Cocolia", 1307, 125, 20);
         Random random = new Random();
 
         tb.MaxHp = 980;
@@ -149,6 +149,7 @@ public class Game
                     }
                 }
             }
+
 
             static void GameStatus(Characters tb, Characters dh, Characters m7, Boss cocolia)
             {

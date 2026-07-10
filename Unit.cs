@@ -120,7 +120,7 @@ namespace Colia
 
                 foreach (var target in alive)
                 {
-                    var rng = random.Next(2, 11);
+                    var rng = random.Next(7, 15);
                     var rngDamage = Atk + rng;
                     target.Damage(rngDamage);
                 }
